@@ -1,5 +1,6 @@
 const MAKE_WEBHOOK_URL = 'https://hook.us2.make.com/4v33uh0td9sqhdtdww12ugh0jx27fvsg';
 
+
 /**
  * Triggers Make.com webhook when a request is assigned to a practitioner.
  * Runs asynchronously and logs status to console.
