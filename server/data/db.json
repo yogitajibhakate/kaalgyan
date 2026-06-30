@@ -1,0 +1,76 @@
+{
+  "users": [
+    {
+      "id": "1",
+      "name": "Coordinator Admin",
+      "email": "admin@gmail.com",
+      "passwordHash": "$2b$10$Zo7WVhKBW7FlTU.OpS0gduAjGXMzcWxGjYD9P7MzREGhvsQ/e01SO",
+      "role": "admin",
+      "active": true,
+      "createdAt": "2026-06-29T10:29:55.065Z"
+    },
+    {
+      "id": "1782729676588",
+      "name": "Ajay Kumar",
+      "email": "Ajay@gmail.com",
+      "passwordHash": "$2b$10$aV9wMoYwgNHHdQ.Aka094uPLFftFrhu0qPuDrg49rpSIXeS7vluQK",
+      "role": "kaalgyani",
+      "active": true,
+      "createdAt": "2026-06-29T10:41:16.774Z"
+    },
+    {
+      "id": "1782733743975",
+      "name": "demo",
+      "email": "demo@gmail.com",
+      "passwordHash": "$2b$10$O/ZFPfPBJNwbtoPKG0WoT.d7E/v2Mad.Ubd.PJtc/AGmcT17/Yq0u",
+      "role": "kaalgyani",
+      "active": true,
+      "createdAt": "2026-06-29T11:49:04.180Z"
+    }
+  ],
+  "requests": [
+    {
+      "RequestID": "KG004",
+      "Name": "neha",
+      "Phone": "08308934121",
+      "Email": "yogita22@navgurukul.org",
+      "Language": [
+        "Hindi",
+        "Kannada"
+      ],
+      "Issues": [
+        "Business",
+        "Career"
+      ],
+      "Status": "New",
+      "AssignedTo": "demo",
+      "Notes": "",
+      "CreatedAt": "2026-06-29T10:52:24.559Z",
+      "OtherIssue": "",
+      "AdditionalDetails": "",
+      "AdminNotes": ""
+    },
+    {
+      "RequestID": "KG005",
+      "Name": "Divij",
+      "Phone": "7721417214",
+      "Email": "divij@gmail.com",
+      "Language": [
+        "English",
+        "Hindi",
+        "Kannada"
+      ],
+      "Issues": [
+        "Career",
+        "Business"
+      ],
+      "Status": "New",
+      "AssignedTo": "Ajay Kumar",
+      "Notes": "",
+      "CreatedAt": "2026-06-29T11:57:38.056Z",
+      "OtherIssue": "",
+      "AdditionalDetails": "",
+      "AdminNotes": ""
+    }
+  ]
+}
