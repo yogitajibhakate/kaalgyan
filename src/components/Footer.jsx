@@ -8,11 +8,8 @@ export default function Footer({ onNavigate }) {
         {/* About Section */}
         <div style={sectionStyle}>
           <div style={logoWrapperStyle}>
-            <div className="logo-icon" style={{ width: '32px', height: '32px' }}>
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" style={{ width: '16px', height: '16px' }}>
-                <circle cx="12" cy="12" r="4" fill="#fff" />
-                <path d="M12 2v2M12 20v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M2 12h2M20 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" strokeLinecap="round" />
-              </svg>
+            <div className="logo-icon" style={{ width: '32px', height: '32px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+              <img src="https://kaalgyan.artofliving.org/images/aol1_logo.svg" alt="KaalGyan Logo" style={{ width: '28px', height: '28px', objectFit: 'contain' }} />
             </div>
             <span style={logoTextStyle}>KaalGyan Portal</span>
           </div>
