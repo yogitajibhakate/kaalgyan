@@ -3,6 +3,7 @@ import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 import { database } from './database.js';
 import { authenticateToken, requireRole, JWT_SECRET } from './middleware/auth.js';
+import { triggerAssignmentWebhook } from './webhook.js';
 
 const router = express.Router();
 
@@ -218,8 +219,15 @@ router.put('/requests/:id', authenticateToken, (req, res) => {
     Issues: fields.Issues !== undefined ? (Array.isArray(fields.Issues) ? fields.Issues : [fields.Issues]) : request.Issues
   };
 
+  const isAssigned = !!updatedRequest.AssignedTo;
+  const assigneeChanged = updatedRequest.AssignedTo !== request.AssignedTo;
+
   requests[reqIndex] = updatedRequest;
   database.saveRequests(requests);
+
+  if (isAssigned && assigneeChanged) {
+    triggerAssignmentWebhook(updatedRequest);
+  }
 
   res.json(updatedRequest);
 });
@@ -232,6 +240,7 @@ router.put('/requests/bulk', authenticateToken, (req, res) => {
   }
 
   const requests = database.getRequests();
+  const newlyAssignedRequests = [];
   let updatedCount = 0;
 
   const updatedRequests = requests.map(r => {
@@ -242,8 +251,12 @@ router.put('/requests/bulk', authenticateToken, (req, res) => {
       // KaalGyani Bulk Assign to Me
       if (fields.AssignedTo === req.user.name) {
         if (req.user.role === 'kaalgyani' && (isUnassigned || isOwn)) {
+          const updated = { ...r, AssignedTo: req.user.name, Status: 'In Progress' };
+          if (r.AssignedTo !== req.user.name) {
+            newlyAssignedRequests.push(updated);
+          }
           updatedCount++;
-          return { ...r, AssignedTo: req.user.name, Status: 'In Progress' };
+          return updated;
         }
       }
       
@@ -259,6 +272,10 @@ router.put('/requests/bulk', authenticateToken, (req, res) => {
   });
 
   database.saveRequests(updatedRequests);
+
+  // Trigger webhooks for newly assigned requests
+  newlyAssignedRequests.forEach(r => triggerAssignmentWebhook(r));
+
   res.json({ success: true, updatedCount });
 });
 
