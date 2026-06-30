@@ -1,10 +1,11 @@
 import { db } from './db';
 
-const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000/api';
+const isLocalhost = window.location.hostname === 'localhost';
 
-// Use LocalStorage DB fallback if we are on a hosted production environment (like Netlify)
-// without a specified backend API URL.
-const useLocalStorageDb = window.location.hostname !== 'localhost' && !import.meta.env.VITE_API_URL;
+const API_URL = import.meta.env.VITE_API_URL || 
+  (isLocalhost ? 'http://localhost:5000/api' : 'https://kaalgyan.onrender.com/api');
+
+const useLocalStorageDb = false; // Disabled to use Render database in production
 
 const getHeaders = () => {
   const token = localStorage.getItem('kaalgyan_token');
