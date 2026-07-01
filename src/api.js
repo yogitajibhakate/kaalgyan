@@ -39,8 +39,10 @@ export const api = {
         throw new Error('Invalid username or password');
       }
       
-      const expectedPassword = user.email === 'admin@gmail.com' ? 'admin@123' : 'password123';
-      if (password !== expectedPassword) {
+      const isCorrect = user.email === 'admin@gmail.com' 
+        ? password === 'admin@123'
+        : (password === user.id || password === 'password123');
+      if (!isCorrect) {
         throw new Error('Invalid username or password');
       }
       

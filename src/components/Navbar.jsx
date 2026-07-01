@@ -36,15 +36,7 @@ export default function Navbar({ currentPage, onNavigate, loggedInUser }) {
                 About
               </a>
             </li>
-            <li>
-              <a 
-                href="#contact" 
-                className={`nav-link ${currentPage === 'contact' ? 'active' : ''}`}
-                onClick={(e) => { e.preventDefault(); onNavigate('contact'); }}
-              >
-                Contact
-              </a>
-            </li>
+
             <li>
               <button 
                 className="btn-nav-admin"

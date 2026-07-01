@@ -4,7 +4,7 @@ const STORAGE_KEY = 'kaalgyan_requests';
 
 const SEED_REQUESTS = [
   {
-    RequestID: 'KG-2001',
+    RequestID: 'KG-00002001',
     Name: 'Rajesh Kumar',
     Phone: '+91 98765 43210',
     Email: 'rajesh.k@gmail.com',
@@ -19,7 +19,7 @@ const SEED_REQUESTS = [
     UpdatedAt: new Date(Date.now() - 2 * 60 * 60 * 1000).toISOString()
   },
   {
-    RequestID: 'KG-2002',
+    RequestID: 'KG-00002002',
     Name: 'Priya Nair',
     Phone: '+91 94460 12345',
     Email: 'priya.nair@outlook.com',
@@ -34,7 +34,7 @@ const SEED_REQUESTS = [
     UpdatedAt: new Date(Date.now() - 12 * 60 * 60 * 1000).toISOString()
   },
   {
-    RequestID: 'KG-2003',
+    RequestID: 'KG-00002003',
     Name: 'Amit Sharma',
     Phone: '+91 88877 76665',
     Email: 'amit.sharma@yahoo.com',
@@ -49,7 +49,7 @@ const SEED_REQUESTS = [
     UpdatedAt: new Date(Date.now() - 4 * 60 * 60 * 1000).toISOString()
   },
   {
-    RequestID: 'KG-2004',
+    RequestID: 'KG-00002004',
     Name: 'Lakshmi Hegde',
     Phone: '+91 91234 56789',
     Email: 'lakshmi.h@hotmail.com',
@@ -64,7 +64,7 @@ const SEED_REQUESTS = [
     UpdatedAt: new Date(Date.now() - 3 * 24 * 60 * 60 * 1000).toISOString()
   },
   {
-    RequestID: 'KG-2005',
+    RequestID: 'KG-00002005',
     Name: 'Rahul Shah',
     Phone: '+91 99001 12233',
     Email: 'rahul.shah@gmail.com',
@@ -115,7 +115,7 @@ export const db = {
     
     const newRequest = {
       ...request,
-      RequestID: `KG-${nextNum}`,
+      RequestID: `KG-${String(nextNum).padStart(8, '0')}`,
       Status: 'New',
       AssignedTo: '',
       AdminNotes: '',
@@ -201,11 +201,12 @@ export const db = {
     localStorage.setItem('kaalgyan_practitioners', JSON.stringify(list));
   },
 
-  // Add KaalGyani
   addKaalGyani(name, email, role, active) {
     const list = this.getKaalGyanis();
+    const newUserId = Date.now().toString();
+
     const newKg = {
-      id: Date.now().toString(),
+      id: newUserId,
       name,
       email,
       role: role || 'kaalgyani',

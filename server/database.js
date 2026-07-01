@@ -53,7 +53,7 @@ const ensureDbExists = () => {
       ],
       requests: [
         {
-          RequestID: 'KG001',
+          RequestID: 'KG00000001',
           Name: 'Amit Sharma',
           Phone: '9876543210',
           Email: 'amit.sharma@example.com',
@@ -65,7 +65,7 @@ const ensureDbExists = () => {
           CreatedAt: new Date(Date.now() - 3600000 * 2).toISOString()
         },
         {
-          RequestID: 'KG002',
+          RequestID: 'KG00000002',
           Name: 'Priya Patel',
           Phone: '8765432109',
           Email: 'priya.patel@example.com',
@@ -77,7 +77,7 @@ const ensureDbExists = () => {
           CreatedAt: new Date(Date.now() - 3600000 * 5).toISOString()
         },
         {
-          RequestID: 'KG003',
+          RequestID: 'KG00000003',
           Name: 'Rahul Verma',
           Phone: '7654321098',
           Email: 'rahul.verma@example.com',
